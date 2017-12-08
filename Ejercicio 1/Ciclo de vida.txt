@@ -1,0 +1,29 @@
+Ciclo de vida del Software
+Procesos:
+
+1. Analisis: Lo primero que se debe hacer para construir un sistema de información es averiguar qué es
+exactamente  lo  que tiene  que  hacer  el  sistema.  La  etapa  de  análisis  en  el  ciclo  de  vida  del
+software corresponde al proceso mediante el cual se intenta descubrir qué es lo que realmente
+se  necesita  y  se  llega  a  una  comprensión  adecuada  de  los  requerimientos  del  sistema  (las
+características que el sistema debe poseer).
+
+2. Diseño: Mientras  que  los  modelos  utilizados  en  la  etapa  de  análisis  representan  los  requisitos  del
+usuario  desde  distintos  puntos  de  vista  (el  qué),  los  modelos  que  se  utilizan  en  la  fase  de
+diseño representan las características del sistema que nos permitirán implementarlo de forma
+efectiva (el cómo).
+
+3. Desarrollo: Una  vez  que  se saben qué  funciones  debe  desempeñar  nuestro  sistema  de  información
+(análisis) y hemos decidido cómo vamos a organizar sus distintos componentes (diseño), es el
+momento de pasar a la etapa de desarrollo, pero nunca antes. Antes de escribir una sola
+línea  de  código  (o  de  crear  una  tabla  en  nuestra  base  de  datos)  es  fundamental  haber
+comprendido bien el problema que se pretende resolver y haber aplicado principios básicos de
+diseño que nos permitan construir un sistema de información de calidad.
+
+4. Pruebas: Errar es humano y la etapa de pruebas tiene como objetivo detectar los errores que se hayan
+podido cometer en las etapas anteriores del proyecto (y, eventualmente, corregirlos). Lo suyo,
+además, es hacerlo antes de que el usuario final del sistema los tenga que sufrir. De hecho,
+una prueba es un éxito cuando se detecta un error (y no al revés, como nos gustaría pensar).
+
+5. Mantenimiento: La etapa de mantenimiento consume típicamente del 40 al 80 por ciento de los recursos de
+una empresa de desarrollo de software. De hecho, con un 60% de media, es probablemente la
+etapa más importante del ciclo de vida del software.

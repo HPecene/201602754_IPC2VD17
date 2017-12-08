@@ -1,0 +1,19 @@
+El ciclo de vida iterativo e incremental es una de las buenas prácticas de ingeniería del software más antiguas, su 
+primer uso en el software se data en los 50 (te dejo este post donde hablamos del tema).
+
+Además, el ciclo de vida iterativo e incremental es una de las bases de un proyecto ágil, más concretamente, con 
+iteraciones cortas en tiempo, de pocas semanas, normalmente un mes y raramente más de dos.
+
+Normalmente se habla, se lee, etc., “el ciclo de vida iterativo e incremental” (o incluso por defecto sólo el “el 
+ciclo de vida iterativo”). Pero ello no quiere decir que iterativo e incremental sea lo mismo. De hecho, el desarrollo 
+iterativo no implica, ni presupone el uso del incremental, y viceversa.
+
+De la unión del ciclo de vida iterativo y el incremental al final de cada iteración se consigue una versión más 
+estable del software, de más calidad, y añadiendo además nuevas funcionalidades respecto a versiones anteriores.
+
+Pero en la práctica, muchas veces nos encontramos con que los equipos olvidan la parte iterativa, olvidan que 
+cada prototipo debe mejorar en calidad al anterior, y se centran solo en añadir funcionalidad.
+
+El problema de esto es que pasadas unas cuantas iteraciones, el producto se hace inmantenible, por su baja calidad, 
+y por ello es muy difícil añadir nueva funcionalidad, alargándose las iteraciones, los ciclos, y muriendo la esencia 
+de todo esto.

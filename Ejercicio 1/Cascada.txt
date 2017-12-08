@@ -1,0 +1,12 @@
+El Modelo en Cascada o también conocido como Ciclo de Vida del software da las pautas que permiten la organización 
+en el desarrollo del software a través de la implementación de sus características etapas, esto quiere decir que 
+cuando se este llevando a cabo todas las tareas pertinentes dentro de esa etapa, no se podrá avanzar a la siguiente 
+etapa hasta no concluir con todas las tareas.
+
+Lamentablemente el uso de este modelo del desarrollo del software pone en jaque la integridad mientras se construye 
+el sistema, ya que si se falla en una etapa, se ve obligado a reiniciar practicamente el proceso de construcción, 
+otra de las situaciones que pueden llevar al fracaso es precisamente una de sus caracteristicas esenciales, avanzar 
+hasta que se concluya la etapa anterior, viéndolo de este modo, puede atrasar de manera significativa el proceso de 
+desarrollo de software, quizá tome mucho más tiempo del que realmente necesite, otra desventaja es el mantenimiento 
+del software, ya que se  involucra la repetición de sus pasos que se llevaron a cabo para la constitución del software 
+volviendo este método muy tedioso, es recomendable utilizar este modelo siempre y cuando se conozca los requerimientos.
