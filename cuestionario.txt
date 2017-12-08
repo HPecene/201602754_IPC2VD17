@@ -1,0 +1,8 @@
+Que entiende como commit?
+	Que guarda los cambios realizados pero no los ha subido.
+
+Que entiende como merge?
+	Cuando una branch se fusiono con otra, haciendolas solo una
+
+Cual es la diferencia entre pull y push?
+	Pull baja de la Nube, push sube a la Nube
