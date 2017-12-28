@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://servicios/" targetNamespace="http://servicios/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AgrearPost" type="tns:AgrearPost" />
+  <xs:element name="AgrearPostResponse" type="tns:AgrearPostResponse" />
+  <xs:element name="BuscarPost" type="tns:BuscarPost" />
+  <xs:element name="BuscarPostResponse" type="tns:BuscarPostResponse" />
+  <xs:element name="ConseguirTimeline" type="tns:ConseguirTimeline" />
+  <xs:element name="ConseguirTimelineResponse" type="tns:ConseguirTimelineResponse" />
+  <xs:element name="SQLException" type="tns:SQLException" />
+  <xs:complexType name="BuscarPost">
+    <xs:sequence>
+      <xs:element name="idUser" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BuscarPostResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:post" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="post">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="creador" type="xs:string" />
+      <xs:element minOccurs="0" name="post" type="xs:string" />
+      <xs:element name="likes" type="xs:int" />
+      <xs:element name="dislikes" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SQLException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SQLState" type="xs:string" />
+      <xs:element name="errorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+      <xs:element minOccurs="0" name="nextException" type="tns:sqlException" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sqlException">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="nextException" type="tns:sqlException" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="exception">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:throwable">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="throwable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="stackTrace" nillable="true" type="tns:stackTraceElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stackTraceElement" final="extension restriction">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="ConseguirTimeline">
+    <xs:sequence>
+      <xs:element name="idUser" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConseguirTimelineResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:post" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AgrearPost">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="post" type="xs:string" />
+      <xs:element name="idCreador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AgrearPostResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

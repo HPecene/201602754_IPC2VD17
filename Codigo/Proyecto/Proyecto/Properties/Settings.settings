@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Proyecto.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Proyecto_WebServiceHabil_ServicioHabilidades" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/TEST/ServicioHabilidades</Value>
+    </Setting>
+    <Setting Name="Proyecto_WebServiceUser_ServicioUsuarios" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/TEST/ServicioUsuarios</Value>
+    </Setting>
+    <Setting Name="Proyecto_WebServicePost_ServicioPosts" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/TEST/ServicioPosts</Value>
+    </Setting>
+    <Setting Name="Proyecto_WebServiceAsoci_ServicioAsociaciones" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/TEST/ServicioAsociaciones</Value>
+    </Setting>
+    <Setting Name="Proyecto_WebServicePro_ServicioProyectos" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/TEST/ServicioProyectos</Value>
+    </Setting>
+    <Setting Name="Proyecto_WebServiceTarea_ServicioTareas" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/TEST/ServicioTareas</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

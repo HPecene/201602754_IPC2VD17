@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://servicios/" targetNamespace="http://servicios/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AgregarTarea" type="tns:AgregarTarea" />
+  <xs:element name="AgregarTareaResponse" type="tns:AgregarTareaResponse" />
+  <xs:element name="BuscarTareas" type="tns:BuscarTareas" />
+  <xs:element name="BuscarTareasResponse" type="tns:BuscarTareasResponse" />
+  <xs:element name="SQLException" type="tns:SQLException" />
+  <xs:complexType name="AgregarTarea">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tarea" type="xs:string" />
+      <xs:element name="idPro" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AgregarTareaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SQLException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SQLState" type="xs:string" />
+      <xs:element name="errorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+      <xs:element minOccurs="0" name="nextException" type="tns:sqlException" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sqlException">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="nextException" type="tns:sqlException" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="exception">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:throwable">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="throwable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="stackTrace" nillable="true" type="tns:stackTraceElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stackTraceElement" final="extension restriction">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="BuscarTareas">
+    <xs:sequence>
+      <xs:element name="idPro" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BuscarTareasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:tarea" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tarea">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="tarea" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

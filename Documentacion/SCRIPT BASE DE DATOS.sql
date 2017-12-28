@@ -1,98 +1,75 @@
-CREATE DATABASE Proyecto;
+CREATE DATABASE PROYECTO;
 
-USE Proyecto;
+USE PROYECTO;
 
-CREATE TABLE adminHD (
-	id_admin_hd INT PRIMARY KEY,
-	usuarioHD VARCHAR,
-	passHD VARCHAR NOT NULL
+CREATE TABLE USUARIO(
+id_usuario serial primary key,
+nickname varchar(30) not null,
+passwd varchar(30) not null,
+email varchar(30) not null
 );
 
-CREATE TABLE usuario (
-	id_user INT PRIMARY KEY,
-	usuario VARCHAR,
-	passUser VARCHAR,
-	karma INT,
-	foto VARCHAR
+CREATE TABLE PROYECTO(
+id_proyecto serial primary key,
+nombreProyecto varchar(30) not null,
+id_fundador bigint(20) unsigned not null,
+constraint foreign key(id_fundador)
+references USUARIO(id_usuario)
 );
 
-CREATE TABLE post (
-	id_post INT PRIMARY KEY,
-	contenido VARCHAR,
-	id_creador INT NOT NULL,
-	CONSTRAINT fk_id_creador FOREIGN KEY (id_creador) REFERENCES usuario(id_user)
+
+CREATE TABLE TAREA(
+id_tarea serial primary key,
+nombreTarea varchar(30) not null,
+id_proyecto bigint(20) unsigned not null,
+constraint foreign key(id_proyecto)
+references PROYECTO(id_proyecto)
 );
 
-CREATE TABLE comentario (
-	id_comentario INT PRIMARY KEY,
-	contenido VARCHAR,
-	id_creador INT NOT NULL,
-	id_post INT NOT NULL,
-	CONSTRAINT fk_id_creador FOREIGN KEY (id_creador) REFERENCES usuario(id_user),
-	CONSTRAINT fk_id_post FOREIGN KEY (id_post) REFERENCES post(id_post)
+CREATE TABLE ASOCIACION(
+id_asociacion serial primary key,
+nombreAsociacion varchar(30) not null,
+id_admin bigint(20) unsigned not null,
+constraint foreign key(id_admin)
+references USUARIO(id_usuario)
 );
 
-CREATE TABLE asociacion (
-	id_asociacion INT PRIMARY KEY,
-	nombre VARCHAR,
-	objetivo VARCHAR,
-	logo VARCHAR,
-	id_creador INT,
-	CONSTRAINT fk_id_creador FOREIGN KEY (id_creador) REFERENCES usuario(id_user)
+CREATE TABLE HABILIDAD(
+id_habilidad serial primary key,
+habilidad varchar(20) not null,
+karma int not null,
+id_user bigint(20) unsigned not null,
+constraint foreign key(id_user)
+references USUARIO(id_usuario)
 );
 
-CREATE TABLE subAdmin (
-	id_subAdmin INT PRIMARY KEY,
-	id_usuario INT,
-	id_asociacion INT,
-	CONSTRAINT fk_id_user FOREIGN KEY (id_usuario) REFERENCES usuario(id_user),
-	CONSTRAINT fk_id_asociacion FOREIGN KEY (id_asociacion) REFERENCES asociacion(id_asociacion)
+CREATE TABLE POST(
+id_post serial primary key,
+post varchar(1000) not null,
+likes int not null,
+dislikes int not null,
+id_creator bigint(20) unsigned not null,
+constraint foreign key(id_creator)
+references USUARIO(id_usuario)
 );
 
-CREATE TABLE habilidad (
-	id_habilidad INT PRIMARY KEY,
-	nombre VARCHAR,
-	descripcion VARCHAR
-	);
-
-CREATE TABLE conocimiento (
-	id_conocimiento INT PRIMARY KEY,
-	nombre VARCHAR,
-	id_habilidad INT,
-	CONSTRAINT fk_id_habilidad FOREIGN KEY (id_habilidad) REFERENCES habilidad(id_habilidad)
+CREATE TABLE COMENTARIO(
+id_comentario serial primary key,
+comentario varchar(1000) not null,
+id_post bigint(20) unsigned not null,
+id_creator bigint(20) unsigned not null,
+constraint foreign key(id_post)
+references POST(id_post),
+constraint foreign key(id_creator)
+references USUARIO(id_usuario)
 );
 
-CREATE TABLE conocimientoUser (
-	id_CU INT PRIMARY KEY,
-	id_usuario INT,
-	id_conocimiento INT,
-	CONSTRAINT fk_id_user FOREIGN KEY (id_usuario) REFERENCES usuario(id_user),
-	CONSTRAINT fk_id_conocimiento FOREIGN KEY (id_conocimiento) REFERENCES conocimiento(id_conocimiento)
-);
-
-CREATE TABLE proyecto (
-	id_proyecto INT PRIMARY KEY,
-	nombre VARCHAR,
-	descripcion VARCHAR,
-	id_creador INT,
-	CONSTRAINT fk_id_creador FOREIGN KEY (id_creador) REFERENCES usuario(id_user)
-);
-
-CREATE TABLE detalleUserProyecto (
-	id_DUP INT PRIMARY KEY,
-	id_usuario INT,
-	id_proyecto INT,
-	CONSTRAINT fk_id_user FOREIGN KEY (id_usuario) REFERENCES usuario(id_user),
-	CONSTRAINT fk_id_proyecto FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto)
-);
-
-CREATE TABLE tarea (
-	id_tarea INT PRIMARY KEY,
-	nombre VARCHAR,
-	descripcion VARCHAR,
-	avance INT,
-	id_usuario INT,
-	id_proyecto INT,
-	CONSTRAINT fk_id_user FOREIGN KEY (id_usuario) REFERENCES usuario(id_user),
-	CONSTRAINT fk_id_proyecto FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto)
+CREATE TABLE AMISTAD(
+id_amistad serial primary key,
+id_user1 bigint(20) unsigned not null,
+id_user2 bigint(20) unsigned not null,
+constraint foreign key(id_user1)
+references USUARIO(id_usuario),
+constraint foreign key(id_user2)
+references USUARIO(id_usuario)
 );

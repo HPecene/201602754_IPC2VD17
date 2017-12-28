@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://servicios/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="ServicioPosts" targetNamespace="http://servicios/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/TEST/ServicioPosts?xsd=1" namespace="http://servicios/" />
+    </xsd:schema>
+  </types>
+  <message name="ConseguirTimeline">
+    <part name="parameters" element="tns:ConseguirTimeline" />
+  </message>
+  <message name="ConseguirTimelineResponse">
+    <part name="parameters" element="tns:ConseguirTimelineResponse" />
+  </message>
+  <message name="SQLException">
+    <part name="fault" element="tns:SQLException" />
+  </message>
+  <message name="BuscarPost">
+    <part name="parameters" element="tns:BuscarPost" />
+  </message>
+  <message name="BuscarPostResponse">
+    <part name="parameters" element="tns:BuscarPostResponse" />
+  </message>
+  <message name="AgrearPost">
+    <part name="parameters" element="tns:AgrearPost" />
+  </message>
+  <message name="AgrearPostResponse">
+    <part name="parameters" element="tns:AgrearPostResponse" />
+  </message>
+  <portType name="ServicioPosts">
+    <operation name="ConseguirTimeline">
+      <input wsam:Action="http://servicios/ServicioPosts/ConseguirTimelineRequest" message="tns:ConseguirTimeline" />
+      <output wsam:Action="http://servicios/ServicioPosts/ConseguirTimelineResponse" message="tns:ConseguirTimelineResponse" />
+      <fault wsam:Action="http://servicios/ServicioPosts/ConseguirTimeline/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="BuscarPost">
+      <input wsam:Action="http://servicios/ServicioPosts/BuscarPostRequest" message="tns:BuscarPost" />
+      <output wsam:Action="http://servicios/ServicioPosts/BuscarPostResponse" message="tns:BuscarPostResponse" />
+      <fault wsam:Action="http://servicios/ServicioPosts/BuscarPost/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="AgrearPost">
+      <input wsam:Action="http://servicios/ServicioPosts/AgrearPostRequest" message="tns:AgrearPost" />
+      <output wsam:Action="http://servicios/ServicioPosts/AgrearPostResponse" message="tns:AgrearPostResponse" />
+      <fault wsam:Action="http://servicios/ServicioPosts/AgrearPost/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+  </portType>
+  <binding name="ServicioPostsPortBinding" type="tns:ServicioPosts">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="ConseguirTimeline">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="BuscarPost">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="AgrearPost">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="ServicioPosts">
+    <port name="ServicioPostsPort" binding="tns:ServicioPostsPortBinding">
+      <soap:address location="http://localhost:8080/TEST/ServicioPosts" />
+    </port>
+  </service>
+</definitions>

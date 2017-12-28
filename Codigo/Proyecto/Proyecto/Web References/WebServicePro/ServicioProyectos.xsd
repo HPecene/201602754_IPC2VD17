@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://servicios/" targetNamespace="http://servicios/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AgregarProyecto" type="tns:AgregarProyecto" />
+  <xs:element name="AgregarProyectoResponse" type="tns:AgregarProyectoResponse" />
+  <xs:element name="BuscarProyectos" type="tns:BuscarProyectos" />
+  <xs:element name="BuscarProyectosResponse" type="tns:BuscarProyectosResponse" />
+  <xs:element name="SQLException" type="tns:SQLException" />
+  <xs:complexType name="BuscarProyectos">
+    <xs:sequence>
+      <xs:element name="idUser" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BuscarProyectosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:proyecto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="proyecto">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="proyecto" type="xs:string" />
+      <xs:element minOccurs="0" name="fundador" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SQLException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SQLState" type="xs:string" />
+      <xs:element name="errorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+      <xs:element minOccurs="0" name="nextException" type="tns:sqlException" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sqlException">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="nextException" type="tns:sqlException" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="exception">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:throwable">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="throwable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="stackTrace" nillable="true" type="tns:stackTraceElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stackTraceElement" final="extension restriction">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="AgregarProyecto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="proyecto" type="xs:string" />
+      <xs:element name="idUser" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AgregarProyectoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

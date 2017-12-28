@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://servicios/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="ServicioProyectos" targetNamespace="http://servicios/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/TEST/ServicioProyectos?xsd=1" namespace="http://servicios/" />
+    </xsd:schema>
+  </types>
+  <message name="AgregarProyecto">
+    <part name="parameters" element="tns:AgregarProyecto" />
+  </message>
+  <message name="AgregarProyectoResponse">
+    <part name="parameters" element="tns:AgregarProyectoResponse" />
+  </message>
+  <message name="SQLException">
+    <part name="fault" element="tns:SQLException" />
+  </message>
+  <message name="BuscarProyectos">
+    <part name="parameters" element="tns:BuscarProyectos" />
+  </message>
+  <message name="BuscarProyectosResponse">
+    <part name="parameters" element="tns:BuscarProyectosResponse" />
+  </message>
+  <portType name="ServicioProyectos">
+    <operation name="AgregarProyecto">
+      <input wsam:Action="http://servicios/ServicioProyectos/AgregarProyectoRequest" message="tns:AgregarProyecto" />
+      <output wsam:Action="http://servicios/ServicioProyectos/AgregarProyectoResponse" message="tns:AgregarProyectoResponse" />
+      <fault wsam:Action="http://servicios/ServicioProyectos/AgregarProyecto/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="BuscarProyectos">
+      <input wsam:Action="http://servicios/ServicioProyectos/BuscarProyectosRequest" message="tns:BuscarProyectos" />
+      <output wsam:Action="http://servicios/ServicioProyectos/BuscarProyectosResponse" message="tns:BuscarProyectosResponse" />
+      <fault wsam:Action="http://servicios/ServicioProyectos/BuscarProyectos/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+  </portType>
+  <binding name="ServicioProyectosPortBinding" type="tns:ServicioProyectos">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="AgregarProyecto">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="BuscarProyectos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="ServicioProyectos">
+    <port name="ServicioProyectosPort" binding="tns:ServicioProyectosPortBinding">
+      <soap:address location="http://localhost:8080/TEST/ServicioProyectos" />
+    </port>
+  </service>
+</definitions>

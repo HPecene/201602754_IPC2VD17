@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://servicios/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="ServicioTareas" targetNamespace="http://servicios/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/TEST/ServicioTareas?xsd=1" namespace="http://servicios/" />
+    </xsd:schema>
+  </types>
+  <message name="BuscarTareas">
+    <part name="parameters" element="tns:BuscarTareas" />
+  </message>
+  <message name="BuscarTareasResponse">
+    <part name="parameters" element="tns:BuscarTareasResponse" />
+  </message>
+  <message name="SQLException">
+    <part name="fault" element="tns:SQLException" />
+  </message>
+  <message name="AgregarTarea">
+    <part name="parameters" element="tns:AgregarTarea" />
+  </message>
+  <message name="AgregarTareaResponse">
+    <part name="parameters" element="tns:AgregarTareaResponse" />
+  </message>
+  <portType name="ServicioTareas">
+    <operation name="BuscarTareas">
+      <input wsam:Action="http://servicios/ServicioTareas/BuscarTareasRequest" message="tns:BuscarTareas" />
+      <output wsam:Action="http://servicios/ServicioTareas/BuscarTareasResponse" message="tns:BuscarTareasResponse" />
+      <fault wsam:Action="http://servicios/ServicioTareas/BuscarTareas/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="AgregarTarea">
+      <input wsam:Action="http://servicios/ServicioTareas/AgregarTareaRequest" message="tns:AgregarTarea" />
+      <output wsam:Action="http://servicios/ServicioTareas/AgregarTareaResponse" message="tns:AgregarTareaResponse" />
+      <fault wsam:Action="http://servicios/ServicioTareas/AgregarTarea/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+  </portType>
+  <binding name="ServicioTareasPortBinding" type="tns:ServicioTareas">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="BuscarTareas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="AgregarTarea">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="ServicioTareas">
+    <port name="ServicioTareasPort" binding="tns:ServicioTareasPortBinding">
+      <soap:address location="http://localhost:8080/TEST/ServicioTareas" />
+    </port>
+  </service>
+</definitions>
